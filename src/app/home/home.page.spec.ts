@@ -3,7 +3,8 @@ import { IonicModule } from '@ionic/angular';
 import { Camera } from '@ionic-native/camera/ngx';
 
 import { HomePage } from './home.page';
-import {RouterTestingModule} from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -11,9 +12,9 @@ describe('HomePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
+      declarations: [HomePage],
       imports: [IonicModule.forRoot(), RouterTestingModule],
-      providers: [Camera]
+      providers: [Camera, Geolocation]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
