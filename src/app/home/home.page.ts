@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { CameraOptions, Camera } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-
+import { filter } from 'rxjs/operators';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -18,28 +19,14 @@ export class HomePage implements OnInit {
 
   constructor(private alertController: AlertController,
     private camera: Camera,
-    private geolocation: Geolocation) { }
+    private geolocation: Geolocation,
+    private localNotifications: LocalNotifications) { }
 
   ngOnInit(): void {
     console.log("je suis un OnInit")
 
-    /* this.geolocation.getCurrentPosition().then((resp) => {
-       // resp.coords.latitude
-       // resp.coords.longitude
-       console.log(resp)
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });*/
-
-    let watch = this.geolocation.watchPosition();
+    let watch = this.geolocation.watchPosition().pipe(filter((p) => p.coords !== undefined));
     watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      // data.coords.latitude
-      // data.coords.longitude
-      //console.log(data)
-
-      //let geoLongitude: number
-      //let geoLatitude: number
       this.geoLongitude = data.coords.longitude
       this.geoLatitude = data.coords.latitude
 
@@ -68,6 +55,13 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
+  sendNotif() {
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Je suis une nouvelle notification'
+    });
+
+  }
   takePicture() {
     const options: CameraOptions = {
       quality: 100,

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="stopCamera()" text="Accueil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Camera</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <ion-button (click)="switchCamera()" class="ion-activated">
+    <ion-icon slot="start" name="notifications-outline"></ion-icon>
+    Switch Camera
+  </ion-button>
+
+
+  <ion-button (click)="setColorEffect()" class="ion-activated">
+    <ion-icon slot="start" name="notifications-outline"></ion-icon>
+    Switch Color effect
+  </ion-button>
+</ion-content>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPage } from './login.page';
+import { CameraPage } from './camera.page';
 import { RouterModule } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 
 @NgModule({
   imports: [
@@ -16,11 +16,11 @@ import { LoginService } from '../services/login.service';
     RouterModule.forChild([
       {
         path: '',
-        component: LoginPage
+        component: CameraPage
       }
     ])
   ],
-  declarations: [LoginPage],
-  providers: [LoginService]
+  declarations: [CameraPage],
+  providers: [CameraPreview]
 })
-export class LoginPageModule { }
+export class CameraPageModule { }
