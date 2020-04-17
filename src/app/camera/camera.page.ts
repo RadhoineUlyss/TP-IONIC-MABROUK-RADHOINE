@@ -5,7 +5,7 @@ import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, Camer
   templateUrl: './camera.page.html',
   styleUrls: ['./camera.page.scss'],
 })
-export class CameraPage implements OnInit {
+export class CameraPage {
 
 
 
@@ -14,10 +14,11 @@ export class CameraPage implements OnInit {
 
   cameraEffect: string = 'none'
 
-  ngOnInit() {
+
+  ionViewDidEnter() {
     const cameraPreviewOpts: CameraPreviewOptions = {
-      x: 0,
-      y: 0,
+      x: 100,
+      y: 100,
       width: window.screen.width / 2,
       height: window.screen.height / 2,
       camera: 'rear',
@@ -43,14 +44,5 @@ export class CameraPage implements OnInit {
   switchCamera() {
     this.cameraPreview.switchCamera();
   }
-
-
-  setColorEffect() {
-    if (this.cameraEffect == "none")
-      this.cameraPreview.setColorEffect('negative');
-    else
-      this.cameraPreview.setColorEffect('none');
-  }
-
 
 }

@@ -10,8 +10,15 @@
   ion-item.ion-activated{
     cursor: pointer;
   }
+
+
 }
 
 ion-content ion-toolbar {
   --background: translucent;
+}
+
+
+p {
+  color: black !important;
 }
