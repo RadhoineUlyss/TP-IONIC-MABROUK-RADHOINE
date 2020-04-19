@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
             buttons: ['Close']
         });
         // quand l alerte sera masquée
-        alert.onDidDismiss().then(() => console.log('alerte masquée'))
+        alert.onDidDismiss().then(() => console.log('Masked alert message'))
 
         // affichage de l alerte
         await alert.present();
@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
     sendNotif() {
         this.localNotifications.schedule({
             id: 1,
-            text: 'Je suis une nouvelle notification'
+            text: 'New notification'
         });
 
     }
